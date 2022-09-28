@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="350dp"
+    android:layout_height="450dp"
+    android:orientation="vertical"
+    >
+
+    <ImageView
+        android:id="@+id/iv_cerrarListProducto"
+        android:layout_width="30dp"
+        android:layout_height="25dp"
+        android:layout_gravity="end"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/btn_image_view"
+        android:src="@drawable/ic_close"
+        android:layout_centerInParent="true"
+        app:tint="@color/colorPrimaryDark" />
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/sv_consultasproductos"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:iconifiedByDefault="false"
+        android:layout_marginTop="10dp"
+        app:defaultQueryHint="Consulta Stocks"
+        app:layout_constraintBottom_toTopOf="@+id/rv_cunsultaStocks"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.0"
+        app:queryHint="Busqueda productos" />
+
+
+    <LinearLayout
+        android:id="@+id/ll_contenedor"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_productos"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_height="match_parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="60dp"
+            tools:ignore="MissingConstraints" />
+
+    </LinearLayout>
+
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <LinearLayout
+            android:id="@+id/ll_cargando"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <include layout="@layout/item_cargando_productos"/>
+            <include layout="@layout/item_cargando_productos"/>
+            <include layout="@layout/item_cargando_productos"/>
+            <include layout="@layout/item_cargando_productos"/>
+            <include layout="@layout/item_cargando_productos"/>
+            <include layout="@layout/item_cargando_productos"/>
+            <include layout="@layout/item_cargando_productos"/>
+            <include layout="@layout/item_cargando_productos"/>
+            <include layout="@layout/item_cargando_productos"/>
+            <include layout="@layout/item_cargando_productos"/>
+            <include layout="@layout/item_cargando_productos"/>
+            <include layout="@layout/item_cargando_productos"/>
+            <include layout="@layout/item_cargando_productos"/>
+            <include layout="@layout/item_cargando_productos"/>
+
+
+        </LinearLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+
+
+
+
+</LinearLayout>

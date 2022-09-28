@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.unosoft.ecomercialapp">
+
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStoge" />
+
+    <application
+        android:name=".DATAGLOBAL"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
+        android:roundIcon="@drawable/ic_launcher"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
+        tools:targetApi="31">
+        <activity
+            android:name=".ui.Splash.SplashScreen"
+            android:theme="@style/SplashTheme"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.LoginPasscode.ActyLoginPasscode"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
+            android:name=".ui.Cliente.ActivityAddCliente"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
+            android:name=".ui.pedidos.VisorPDFPedido"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
+            android:name=".ui.Cotizacion.VisorPDFCotizacion"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
+            android:name=".ui.pedidos.EditCabezeraPedido"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
+            android:name=".ui.pedidos.ActivityCartPedido"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
+            android:name=".ui.pedidos.ActivityAddPedido"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
+            android:name=".ui.Cotizacion.EditCabezera"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
+            android:name=".ui.Cotizacion.ActivityCardQuotation"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
+            android:name=".ui.Cotizacion.ActivityAddCotizacion"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
+            android:name=".ui.Cotizacion.ActivityDetalleCotizacion"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
+            android:name=".ui.Cotizacion.ActivityEditCotizacion"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.inicio.InicioActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:exported="false"
+            android:label="@string/title_activity_inicio" />
+        <activity
+            android:name=".ui.pedidos.ActivityEditPedido"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
+            android:name=".ui.pedidos.ActivityEditDetallePedido"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
+            android:name=".ui.Empresas.ActySelectEmpresa"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:exported="false">
+
+        </activity>
+    </application>
+
+</manifest>

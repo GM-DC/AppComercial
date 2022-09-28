@@ -1,0 +1,566 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:background="#C6CCD6"
+    android:orientation="vertical"
+    tools:context=".ui.pedidos.ActivityEditPedido">
+
+    <LinearLayout
+        android:id="@+id/linearLayout5"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/app_bar_inicio"
+            layout="@layout/app_bar_inicio"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <!--sección Cabecera-->
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_view_cotizacion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="#FFF"
+                    android:elevation="20dp"
+                    android:minHeight="70dp"
+                    card_view:cardCornerRadius="10dp"
+                    card_view:contentPadding="13dp">
+
+                    <LinearLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="40dp"
+                        android:orientation="horizontal"
+                        android:weightSum="100">
+
+
+                        <RelativeLayout
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical">
+
+                            <ImageView
+                                android:id="@+id/ic_info_ot"
+                                android:layout_width="52dp"
+                                android:layout_height="52dp"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/ic_base"
+                                android:fontFamily="sans-serif-condensed"
+                                android:padding="15dp"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/ic_user"
+                                app:tint="@color/colorPrimary" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/ic_info_ot"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="10dp"
+                                android:text="Pedido" />
+                        </RelativeLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="100"
+                            android:animateLayoutChanges="true"
+
+                            android:layoutDirection="ltr"
+                            android:orientation="vertical"
+                            android:weightSum="100">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="50"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/tv_NumPedido"
+                                        style="@style/sizeTextView"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:ellipsize="marquee"
+                                        android:gravity="center_vertical"
+                                        android:maxLines="2"
+                                        android:text="Numero: COT-0000145271"
+                                        android:textColor="@color/colorPrimary" />
+
+                                    <TextView
+                                        style="@style/sizeTextView"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:ellipsize="marquee"
+                                        android:gravity="center_vertical"
+                                        android:maxLines="2"
+                                        android:text="Técnico Asignado"
+                                        android:textColor="@color/colorPrimary"
+                                        android:visibility="gone" />
+
+                                    <TextView
+                                        android:id="@+id/tv_tecnico"
+                                        style="@style/sizeTextView"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:ellipsize="marquee"
+                                        android:gravity="center_vertical"
+                                        android:text=""
+                                        android:textStyle="bold"
+                                        android:visibility="gone" />
+
+                                    <TextView
+                                        android:id="@+id/tv_fechaCreacionPedido"
+                                        style="@style/sizeTextView"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:ellipsize="marquee"
+                                        android:gravity="center_vertical"
+                                        android:maxLines="2"
+                                        android:text="Fecha Creación: 17/12/2021"
+                                        android:textColor="@color/colorPrimary" />
+
+                                    <TextView
+                                        android:id="@+id/tv_NomClientePedido"
+                                        style="@style/sizeTextView"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:ellipsize="marquee"
+                                        android:gravity="center_vertical"
+                                        android:text="Nombre Cliente: ARTEUS COMP SAC"
+                                        android:textColor="@color/colorPrimary" />
+
+                                    <TextView
+                                        android:id="@+id/tv_rucPedido"
+                                        style="@style/sizeTextView"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:ellipsize="marquee"
+                                        android:gravity="center_vertical"
+                                        android:text="RUC: 20600114299"
+                                        android:textColor="@color/colorPrimary" />
+
+                                    <TextView
+                                        android:id="@+id/tv_tipoMonedaPedido"
+                                        style="@style/sizeTextView"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:ellipsize="marquee"
+                                        android:gravity="center_vertical"
+                                        android:text="Moneda: SOLES"
+                                        android:textColor="@color/colorPrimary" />
+
+                                    <TextView
+                                        android:id="@+id/tv_4"
+                                        style="@style/sizeTextView"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:ellipsize="marquee"
+                                        android:gravity="center_vertical"
+                                        android:text="Comentario de aprobación"
+                                        android:textColor="@color/colorPrimary"
+                                        android:visibility="gone" />
+
+                                    <TextView
+                                        android:id="@+id/tv_comentario_aprov"
+                                        style="@style/sizeTextView"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:ellipsize="marquee"
+                                        android:gravity="center_vertical"
+                                        android:text=""
+                                        android:textStyle="bold"
+                                        android:visibility="gone" />
+
+                                    <TextView
+                                        android:id="@+id/tv_CondPagoPedido"
+                                        style="@style/sizeTextView"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:ellipsize="marquee"
+                                        android:gravity="center_vertical"
+                                        android:text="Condicion Pago: CONTADO TRANSFERENCIA"
+                                        android:textColor="@color/colorPrimary" />
+
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!--FIN CABECERA-->
+                <!--sección PRODUCTOS-->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_view_jobs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="#FFF"
+                    android:elevation="20dp"
+                    android:minHeight="70dp"
+                    card_view:cardCornerRadius="10dp"
+                    card_view:contentPadding="13dp">
+
+                    <LinearLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="103dp"
+                        android:minHeight="40dp"
+                        android:orientation="horizontal"
+                        android:weightSum="100">
+
+
+                        <RelativeLayout
+                            android:layout_width="120dp"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/ic_products"
+                                android:layout_width="52dp"
+                                android:layout_height="52dp"
+
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/ic_base"
+                                android:fontFamily="sans-serif-condensed"
+                                android:padding="15dp"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/ic_almacen"
+                                app:tint="@color/colorPrimary" />
+
+                            <TextView
+                                style="@style/sizeTextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/ic_products"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="10dp"
+                                android:singleLine="true"
+                                android:text="Productos" />
+                        </RelativeLayout>
+
+                        <LinearLayout
+                            android:id="@+id/list_jobs"
+                            android:layout_width="0dp"
+                            android:layout_height="90dp"
+                            android:layout_weight="100"
+                            android:gravity="center_vertical"
+                            android:orientation="vertical"
+                            android:weightSum="100">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:gravity="center_horizontal"
+                                android:text="Ver listado de cotización" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+                <!--FIN PRODUCTOS-->
+                <!--Observaciones-->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_view_solutions"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="#FFF"
+                    android:elevation="20dp"
+                    android:minHeight="70dp"
+                    card_view:cardCornerRadius="10dp"
+                    card_view:contentPadding="15dp">
+
+                    <LinearLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="40dp"
+                        android:orientation="horizontal"
+                        android:weightSum="100">
+
+
+                        <RelativeLayout
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:id="@+id/ic_solutions"
+                                android:layout_width="52dp"
+                                android:layout_height="52dp"
+
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/ic_base"
+                                android:fontFamily="sans-serif-condensed"
+                                android:padding="15dp"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/ic_add_photo"
+                                app:tint="@color/colorPrimary" />
+
+                            <TextView
+                                style="@style/sizeTextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/ic_solutions"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="10dp"
+                                android:singleLine="true"
+                                android:text="Observaciones" />
+                        </RelativeLayout>
+
+                        <LinearLayout
+                            android:id="@+id/list_solutions"
+                            android:layout_width="0dp"
+                            android:layout_height="61dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="100"
+                            android:gravity="center_vertical"
+                            android:orientation="vertical"
+                            android:weightSum="100">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:gravity="center_horizontal"
+                                android:text="SIN OBSERVACIONES" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+                <!--Fin Observaciones-->
+                <!--sección TOTALES-->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_view_vehicle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="#FFF"
+                    android:elevation="20dp"
+                    android:minHeight="70dp"
+                    card_view:cardCornerRadius="10dp"
+                    card_view:contentPadding="15dp">
+
+                    <LinearLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="40dp"
+                        android:orientation="horizontal"
+                        android:weightSum="100">
+
+
+                        <RelativeLayout
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical">
+
+                            <ImageView
+                                android:id="@+id/ic_info_vehicle"
+                                android:layout_width="52dp"
+                                android:layout_height="52dp"
+                                android:layout_alignParentTop="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/ic_base"
+                                android:fontFamily="sans-serif-condensed"
+                                android:padding="15dp"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/ic_money"
+                                app:tint="@color/colorPrimary" />
+
+                            <TextView
+                                style="@style/sizeTextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/ic_info_vehicle"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="10dp"
+                                android:text="Totales" />
+                        </RelativeLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="100"
+                            android:orientation="vertical"
+
+                            android:weightSum="100">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="50"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        style="@style/sizeTextView"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:ellipsize="marquee"
+                                        android:gravity="center_vertical"
+                                        android:text="Sub-Total: "
+                                        android:textColor="@color/colorPrimary" />
+
+                                    <TextView
+                                        android:id="@+id/tv_subTotalPedido"
+                                        style="@style/sizeTextView"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:ellipsize="marquee"
+                                        android:text="S/ 0.0"
+                                        android:textAlignment="textEnd"
+                                        android:textColor="@color/colorPrimary" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        style="@style/sizeTextView"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:ellipsize="marquee"
+                                        android:gravity="center_vertical"
+                                        android:text="Valor Venta: "
+                                        android:textColor="@color/colorPrimary" />
+
+                                    <TextView
+                                        android:id="@+id/tv_valorVentaPedido"
+                                        style="@style/sizeTextView"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:ellipsize="marquee"
+                                        android:text="S/. 0.0"
+                                        android:textAlignment="textEnd"
+                                        android:textColor="@color/colorPrimary" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        style="@style/sizeTextView"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:ellipsize="marquee"
+                                        android:gravity="center_vertical"
+                                        android:text="IGV: "
+                                        android:textColor="@color/colorPrimary" />
+
+                                    <TextView
+                                        android:id="@+id/tv_igvPedido"
+                                        style="@style/sizeTextView"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="S/ 0.0"
+                                        android:textAlignment="textEnd"
+                                        android:textColor="@color/colorPrimary" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        style="@style/sizeTextView"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:ellipsize="marquee"
+                                        android:gravity="center_vertical"
+                                        android:text="Importe Total: "
+                                        android:textColor="@color/colorPrimary" />
+
+                                    <TextView
+                                        android:id="@+id/tv_importeTotalPedido"
+                                        style="@style/sizeTextView"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:ellipsize="marquee"
+                                        android:text="S/. 0.0"
+                                        android:textAlignment="textEnd"
+                                        android:textColor="@color/colorPrimary" />
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+                <!--FIN TOTALES-->
+
+            </LinearLayout>
+
+            <!---->
+        </ScrollView>
+
+    </LinearLayout>
+
+    <com.getbase.floatingactionbutton.FloatingActionsMenu
+        android:id="@+id/menu_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="3dp"
+        android:layout_marginBottom="503dp"
+        app:fab_addButtonColorNormal="?attr/colorPrimary"
+        app:fab_addButtonSize="normal"
+        app:fab_labelStyle="@style/Etiquetas"
+        app:fab_labelsPosition="left"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fa_pdfPedido"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_colorNormal="@color/colorPrimary"
+            app:fab_icon="@drawable/ic_pdf"
+            app:fab_size="mini"
+            app:fab_title="Ver PDF" />
+
+    </com.getbase.floatingactionbutton.FloatingActionsMenu>
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>

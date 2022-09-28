@@ -1,0 +1,132 @@
+<androidx.cardview.widget.CardView android:id="@+id/cardViewItemRepuesto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginRight="5dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginTop="4dp"
+    app:cardCornerRadius="10dp"
+    app:cardUseCompatPadding="true"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="402dp"
+        android:layout_height="198dp"
+        android:background="#e4e4e4"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="153dp">
+
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/ic_almacen"
+                app:tint="@color/colorPrimaryDark" />
+
+            <TextView
+                android:id="@+id/name"
+                style="@style/sizeTextView"
+                android:layout_width="240dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="70dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="MOUSE ERGONOMICO KLIP"
+                android:textStyle="bold"
+                android:textColor="@color/negro" />
+
+            <TextView
+                android:id="@+id/document"
+                style="@style/sizeTextView"
+                android:layout_width="240dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/name"
+                android:layout_marginStart="70dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="MOUS0001"
+                android:textColor="@color/negro" />
+
+            <TextView
+                android:id="@+id/document3"
+                style="@style/sizeTextView"
+                android:layout_width="240dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/name"
+                android:layout_marginStart="70dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Precio Unit: S/. 150.00"
+                android:textColor="@color/negro" />
+
+            <TextView
+                android:id="@+id/document4"
+                style="@style/sizeTextView"
+                android:layout_width="240dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/name"
+                android:layout_marginStart="70dp"
+                android:layout_marginTop="42dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Precio Total: S/. 350.00"
+                android:textColor="@color/negro" />
+
+            <LinearLayout
+
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/document"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="47dp"
+                android:layout_marginEnd="50dp"
+                android:gravity="center_vertical|center_horizontal"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/increase"
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/btn_image_view"
+                    android:src="@drawable/ic_add"
+                    app:tint="@color/colorPrimaryDark" />
+
+                <TextView
+                    android:id="@+id/quantity"
+                    style="@style/sizeTextView"
+                    android:layout_width="40dp"
+                    android:layout_height="50dp"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="sans-serif-condensed"
+                    android:gravity="center"
+                    android:text="3"
+                    android:textColor="@color/negro" />
+
+                <ImageView
+                    android:id="@+id/decrease"
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/btn_image_view"
+                    android:src="@drawable/ic_less"
+                    app:tint="@color/colorPrimaryDark" />
+
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="7dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorPrimaryDark" />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

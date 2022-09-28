@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.Cliente.ActivityConsultaCliente">
+
+    <LinearLayout
+        android:id="@+id/ll_contenedor"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/sv_buscadorClienteFragment"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:iconifiedByDefault="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_recyclerClienteFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sv_buscadorClienteFragment"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="1dp" />
+
+    </LinearLayout>
+
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:shimmer_auto_start="true">
+
+        <LinearLayout
+            android:id="@+id/ll_cargando"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.SearchView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:iconifiedByDefault="false"/>
+
+            <include layout="@layout/item_cargando_cliente"/>
+            <include layout="@layout/item_cargando_cliente"/>
+            <include layout="@layout/item_cargando_cliente"/>
+            <include layout="@layout/item_cargando_cliente"/>
+            <include layout="@layout/item_cargando_cliente"/>
+            <include layout="@layout/item_cargando_cliente"/>
+            <include layout="@layout/item_cargando_cliente"/>
+            <include layout="@layout/item_cargando_cliente"/>
+            <include layout="@layout/item_cargando_cliente"/>
+            <include layout="@layout/item_cargando_cliente"/>
+            <include layout="@layout/item_cargando_cliente"/>
+            <include layout="@layout/item_cargando_cliente"/>
+            <include layout="@layout/item_cargando_cliente"/>
+            <include layout="@layout/item_cargando_cliente"/>
+
+
+        </LinearLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

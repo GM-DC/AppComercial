@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item android:title="Bienvenidos">
+        <menu>
+            <item
+                android:id="@+id/nav_home"
+                android:icon="@drawable/ic_home"
+                android:title="@string/menu_home" />
+        </menu>
+    </item>
+    <item android:title="Ventas">
+        <menu>
+
+
+            <item
+                android:id="@+id/activityConsultaCliente"
+                android:icon="@drawable/ic_menu_home"
+                android:title="Clientes" />
+
+            <item
+                android:id="@+id/activityCotizacion"
+                android:icon="@drawable/ic_list_ot_white"
+                android:title="@string/menu_slideshow" />
+
+            <item
+                android:id="@+id/pedidosFragment2"
+                android:icon="@drawable/ic_bill"
+                android:title="Pedidos" />
+        </menu>
+    </item>
+    <item android:title="Inventario">
+        <menu>
+            <item
+                android:id="@+id/nav_gallery"
+                android:icon="@drawable/ic_out"
+                android:title="@string/menu_gallery" >
+            </item>
+
+
+
+        </menu>
+    </item>
+    <item android:title="Mantenimientos">
+        <menu>
+            <item
+                android:id="@+id/sincTablaBassicaFragment"
+                android:icon="@drawable/ic_sync"
+                android:title="Sinc. Tablas Básicas" />
+            <item
+                android:id="@+id/cerrarSesionFrament"
+                android:icon="@drawable/ic_salir"
+                android:title="Cerrar Sesión" />
+        </menu>
+    </item>
+</menu>

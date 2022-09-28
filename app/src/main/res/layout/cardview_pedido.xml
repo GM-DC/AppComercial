@@ -1,0 +1,106 @@
+<androidx.cardview.widget.CardView android:id="@+id/cardViewCotizaciones"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginRight="5dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginTop="4dp"
+    app:cardCornerRadius="10dp"
+    app:cardUseCompatPadding="true"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#e4e4e4"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="352dp"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true"
+                android:src="@drawable/ic_list_ot_white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/linearLayout11"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/colorPrimaryDark" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/tv_cliente"
+                    style="@style/sizeTextView"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-condensed"
+                    android:maxLines="1"
+                    android:text="ARTEUS COMP SAC"
+                    android:textColor="@color/negro" />
+
+                <TextView
+                    android:id="@+id/tv_numeropedido"
+                    style="@style/sizeTextView"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-condensed"
+                    android:text="PED -00000010"
+                    android:textColor="@color/negro" />
+
+                <TextView
+                    android:id="@+id/fechapedido"
+                    style="@style/sizeTextView"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-condensed"
+                    android:text="Fecha: 11-22-2021"
+                    android:textColor="@color/negro" />
+
+                <TextView
+                    android:id="@+id/ruc"
+                    style="@style/sizeTextView"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-condensed"
+                    android:text="RUC: 20600114299"
+                    android:textColor="@color/negro" />
+
+                <TextView
+                    android:id="@+id/preciopedido"
+                    style="@style/sizeTextView"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-condensed"
+                    android:text="TOTAL S/.1.500,00"
+                    android:textColor="@color/negro" />
+
+
+            </LinearLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorPrimaryDark" />
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

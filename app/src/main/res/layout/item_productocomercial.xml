@@ -1,0 +1,71 @@
+<androidx.cardview.widget.CardView
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginRight="5dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginTop="4dp"
+    app:cardCornerRadius="10dp"
+    app:cardUseCompatPadding="true"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#e4e4e4"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/ic_almacen"
+                app:tint="@color/colorPrimaryDark" />
+
+            <TextView
+                android:id="@+id/tv_nameProductoComercial"
+                style="@style/sizeTextView"
+                android:layout_width="240dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="70dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="MOUSE ERGONOMICO KLIP"
+                android:textColor="@color/negro"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_codProductoComercial"
+                style="@style/sizeTextView"
+                android:layout_width="240dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_nameProductoComercial"
+                android:layout_marginStart="70dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="MOUS0001"
+                android:textColor="@color/negro" />
+
+            <TextView
+                android:id="@+id/tv_precioUnit"
+                style="@style/sizeTextView"
+                android:layout_width="240dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_nameProductoComercial"
+                android:layout_marginStart="70dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Precio Unit: S/. 150.00"
+                android:textColor="@color/negro" />
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

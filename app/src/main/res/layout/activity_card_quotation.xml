@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.Cotizacion.ActivityCardQuotation"
+    android:orientation="vertical">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_listProdut"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.01" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/icon_addMoreProductList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_add" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="5dp"
+        android:background="@color/white"
+        android:gravity="bottom"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:gravity="center_vertical"
+                android:paddingStart="20dp"
+                android:text="Sub-Total:"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/tv_subTotalAddCart"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginRight="30dp"
+                android:text="S/. 0.0"
+                android:textAlignment="textEnd"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="16dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:gravity="center_vertical"
+                android:paddingStart="20dp"
+                android:text="IGV:"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/tv_igvCotAddCart"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginRight="30dp"
+                android:text="S/. 0.0"
+                android:textAlignment="textEnd"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="16dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+
+            >
+
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:gravity="center_vertical"
+                android:paddingStart="20dp"
+
+                android:text="Total:"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/tv_totalCotAddCart"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginRight="30dp"
+                android:text="S/. 0.0"
+                android:textAlignment="textEnd"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="16dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btn_guardarCartCotizacion"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="15dp"
+                android:background="@color/colorPrimary"
+                android:text="Guardar"
+                android:textColor="@color/colorBackground" />
+
+            <Button
+                android:id="@+id/btn_cancelarCartCotizacion"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="15dp"
+                android:background="@color/colorBackground"
+                android:text="Retroceder"
+                android:textColor="@color/colorPrimary" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

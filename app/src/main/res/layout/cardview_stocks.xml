@@ -1,0 +1,113 @@
+<androidx.cardview.widget.CardView android:id="@+id/cardViewCotizaciones"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginRight="5dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginTop="4dp"
+    app:cardCornerRadius="10dp"
+    app:cardUseCompatPadding="true"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#e4e4e4"
+        android:orientation="vertical"
+        android:padding="20dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/ic_almacen"
+                app:tint="@color/colorPrimaryDark" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="70dp"
+                android:layout_marginTop="0dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/nombreproductostocks"
+                    style="@style/sizeTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:fontFamily="sans-serif-condensed"
+                    android:text="ADAPTADOR 5 PINES A USB"
+                    android:textColor="@color/negro"
+                    android:singleLine = "false"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_codProducto"
+                    style="@style/sizeTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-condensed"
+                    android:text="COD: ADAP000001"
+                    android:textColor="@color/negro" />
+
+                <TextView
+                    android:id="@+id/tv_CodBarra"
+                    style="@style/sizeTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-condensed"
+                    android:text="COD BAR: 0000010000"
+                    android:textColor="@color/negro" />
+
+                <TextView
+                    android:id="@+id/tv_codReferente"
+                    style="@style/sizeTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-condensed"
+                    android:text="COD REF: 222"
+                    android:textColor="@color/negro" />
+
+            </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/darkGrey" />
+        <androidx.recyclerview.widget.RecyclerView
+
+            android:id="@+id/rv_recyclerstocksalmacenes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="1dp"
+            tools:ignore="MissingConstraints" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorPrimaryDark" />
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

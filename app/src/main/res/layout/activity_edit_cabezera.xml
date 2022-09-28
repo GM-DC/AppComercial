@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.Cotizacion.EditCabezera">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <!--sección Cabecera-->
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_view_cotizacion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="#FFF"
+                android:elevation="20dp"
+                android:minHeight="70dp"
+                >
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="40dp"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+
+
+                    <RelativeLayout
+                        android:layout_gravity="center_vertical"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/iv_datosClientCabezera"
+                            android:layout_width="52dp"
+                            android:layout_height="52dp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/ic_base"
+                            android:fontFamily="sans-serif-condensed"
+                            android:padding="15dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/ic_user"
+                            app:tint="@color/colorPrimary" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/iv_datosClientCabezera"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="10dp"
+                            android:text="Info cliente" />
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="100"
+                        android:orientation="vertical"
+
+                        android:layout_gravity="center_vertical"
+
+                        android:animateLayoutChanges="true"
+                        android:layoutDirection="ltr"
+                        android:weightSum="100">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="50"
+                            android:orientation="horizontal"
+                            >
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="50"
+                                android:orientation="vertical"
+
+                                >
+
+                                <TextView
+                                    android:id="@+id/tv_cliente"
+                                    android:layout_margin="3dp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:ellipsize="marquee"
+                                    android:gravity="center_vertical"
+                                    android:text="Nombre: "
+                                    style="@style/sizeTextView"  />
+
+                                <TextView
+                                    android:id="@+id/tv_ruc"
+                                    android:layout_margin="3dp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:ellipsize="marquee"
+                                    android:gravity="center_vertical"
+                                    android:text="RUC: "
+                                    style="@style/sizeTextView"  />
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!--FIN CABECERA-->
+            <!--sección PRODUCTOS-->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_view_jobs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="#FFF"
+                android:elevation="20dp"
+                android:minHeight="70dp">
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="40dp"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+
+
+
+                    <LinearLayout
+                        android:id="@+id/list_jobs"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="100"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical"
+                        android:weightSum="100"
+                        android:paddingStart="10dp"
+                        android:paddingBottom="6dp">
+
+                        <TextView
+                            style="@style/sizeTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/iv_productoAddCot"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="10dp"
+                            android:singleLine="true"
+                            android:layout_marginBottom="10dp"
+                            android:text="Datos comerciales"
+
+                            />
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginBottom="10dp"
+                            android:orientation="horizontal"
+                            android:gravity="center"
+                            >
+
+                            <TextView
+                                android:id="@+id/tv_monedaCabezera"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Moneda" />
+
+                            <Spinner
+                                android:id="@+id/sp_monedaCabezera"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginBottom="10dp"
+                            android:gravity="center"
+                            >
+
+                            <TextView
+                                android:id="@+id/tv_listPrecioCabezera"
+                                android:layout_width="wrap_content"
+                                android:layout_height="26dp"
+                                android:text="Precio" />
+
+                            <Spinner
+                                android:id="@+id/sp_listPrecioCabezera"
+                                android:layout_width="match_parent"
+                                android:layout_height="35dp"/>
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginBottom="10dp"
+                            android:gravity="center"
+                            >
+
+                            <TextView
+                                android:id="@+id/tv_validezCabezera"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Validez"
+                                />
+
+                            <Spinner
+                                android:id="@+id/sp_validezCabezera"
+                                android:layout_width="match_parent"
+                                android:layout_height="30dp"
+                                android:gravity="center_horizontal"
+                                android:text="Spinner" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginBottom="10dp"
+                            android:gravity="center"
+                            >
+
+                            <TextView
+                                android:id="@+id/tv_CondPagoCabezera"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Condicion de Pago" />
+
+                            <Spinner
+                                android:id="@+id/sp_CondicionpagoCabezera"
+                                android:layout_width="match_parent"
+                                android:layout_height="30dp"
+                                android:layout_gravity="center_horizontal"
+                                android:gravity="center_horizontal"
+                                android:text="Spinner" />
+
+                        </LinearLayout>
+
+
+
+
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <!--FIN PRODUCTOS-->
+            <!--Observaciones-->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_view_solutions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="#FFF"
+                android:elevation="20dp"
+                android:minHeight="70dp">
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="40dp"
+                    android:orientation="horizontal"
+                    android:weightSum="100"
+                    android:paddingStart="10dp"
+                    android:paddingBottom="6dp">
+
+                    <LinearLayout
+                        android:id="@+id/list_solutions"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="100"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical"
+                        android:weightSum="100">
+
+                        <TextView
+                            style="@style/sizeTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/ic_observacion"
+                            android:layout_centerHorizontal="true"
+                            android:singleLine="true"
+                            android:text="Vendedor"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginBottom="10dp"
+                            android:gravity="center"
+                            >
+
+                            <TextView
+                                android:id="@+id/tv_vendedorCabezera"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Vendedor Asignado" />
+
+                            <Spinner
+                                android:id="@+id/sp_vendedorasignadoCabezera"
+                                android:layout_width="match_parent"
+                                android:layout_height="30dp"
+                                android:layout_gravity="center_horizontal"
+                                android:gravity="center_horizontal"
+                                android:text="Spinner" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <!--Fin Observaciones-->
+            <!--sección TOTALES-->
+            <!--FIN TOTALES-->
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_guardarCabeceraCot"
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:background="@color/colorPrimary"
+                    android:text="Guardar"
+                    android:textColor="@color/colorBackground"/>
+
+                <Button
+                    android:id="@+id/btn_cancelCabezeraCot"
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:background="@color/colorBackground"
+                    android:text="Retroceder"
+                    android:textColor="@color/colorPrimary"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+
+        <!---->
+    </ScrollView>
+
+
+</LinearLayout>

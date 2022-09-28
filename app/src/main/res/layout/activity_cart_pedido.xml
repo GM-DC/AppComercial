@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".ui.pedidos.ActivityCartPedido">
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_listProdut"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/icon_addMoreProductList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout12"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_add" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout12"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:gravity="center_vertical"
+                android:paddingStart="20dp"
+                android:text="Sub-Total:"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/tv_subTotalAddCart"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginRight="30dp"
+                android:text="S/. 0.0"
+                android:textAlignment="textEnd"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="16dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:gravity="center_vertical"
+                android:paddingStart="20dp"
+                android:text="IGV:"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/tv_igvAddCart"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginRight="30dp"
+                android:text="S/. 0.0"
+                android:textAlignment="textEnd"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="16dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+
+            >
+
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:gravity="center_vertical"
+                android:paddingStart="20dp"
+
+                android:text="Total:"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/tv_totalAddCart"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginRight="30dp"
+                android:text="S/. 0.0"
+                android:textAlignment="textEnd"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="16dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginVertical="5dp">
+
+            <Button
+                android:id="@+id/btn_guardarCartPedido"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="15dp"
+                android:background="@color/colorPrimary"
+                android:text="Guardar"
+                android:textColor="@color/colorBackground" />
+
+            <Button
+                android:id="@+id/btn_cancelarCartPedido"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="15dp"
+                android:background="@color/colorBackground"
+                android:text="Retroceder"
+                android:textColor="@color/colorPrimary" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

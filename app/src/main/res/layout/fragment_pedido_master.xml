@@ -1,0 +1,558 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:background="#C6CCD6"
+    android:orientation="vertical"
+    tools:context=".Activity.Cotizacion.ActivityCotizacion">
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <!--sección Cabecera-->
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_view_cotizacion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="#FFF"
+                android:elevation="20dp"
+                android:minHeight="70dp"
+                card_view:cardCornerRadius="10dp"
+                card_view:contentPadding="15dp">
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="40dp"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+
+
+                    <RelativeLayout
+                        android:layout_gravity="center_vertical"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/ic_cotizacion"
+                            android:layout_width="52dp"
+                            android:layout_height="52dp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/ic_base"
+                            android:fontFamily="sans-serif-condensed"
+                            android:padding="15dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/ic_user"
+                            app:tint="@color/colorPrimary" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/ic_cotizacion"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="10dp"
+                            android:text="Cotización" />
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="100"
+                        android:orientation="vertical"
+
+                        android:animateLayoutChanges="true"
+                        android:layoutDirection="ltr"
+                        android:weightSum="100">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="50"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="50"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tv_numeroPedido"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:ellipsize="marquee"
+                                    android:gravity="center_vertical"
+                                    android:maxLines="2"
+                                    android:text="Numero: COT-0000145271"
+                                    android:textColor="@color/colorPrimary"
+                                    style="@style/sizeTextView"  />
+
+                                <TextView
+                                    android:visibility="gone"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:ellipsize="marquee"
+                                    android:gravity="center_vertical"
+                                    android:maxLines="2"
+                                    android:text="Técnico Asignado"
+                                    android:textColor="@color/colorPrimary"
+                                    style="@style/sizeTextView"  />
+
+                                <TextView
+                                    android:visibility="gone"
+                                    android:id="@+id/tv_tecnico"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:ellipsize="marquee"
+                                    android:gravity="center_vertical"
+                                    android:text=""
+                                    android:textStyle="bold"
+                                    style="@style/sizeTextView"  />
+
+                                <TextView
+                                    android:id="@+id/tv_fec_orden"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:ellipsize="marquee"
+                                    android:gravity="center_vertical"
+                                    android:maxLines="2"
+                                    android:text="Fecha Creación: 17/12/2021"
+                                    android:textColor="@color/colorPrimary"
+                                    style="@style/sizeTextView"  />
+
+                                <TextView
+                                    android:id="@+id/tv_cliente"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:ellipsize="marquee"
+                                    android:gravity="center_vertical"
+                                    android:text="Nombre Cliente: ARTEUS COMP SAC"
+                                    android:textColor="@color/colorPrimary"
+                                    style="@style/sizeTextView"  />
+
+                                <TextView
+                                    android:id="@+id/tv_ruc"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:ellipsize="marquee"
+                                    android:gravity="center_vertical"
+                                    android:text="RUC: 20600114299"
+                                    android:textColor="@color/colorPrimary"
+                                    style="@style/sizeTextView"  />
+
+                                <TextView
+                                    android:id="@+id/tv_moneda"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:ellipsize="marquee"
+                                    android:gravity="center_vertical"
+                                    android:text="Moneda: SOLES"
+                                    android:textColor="@color/colorPrimary"
+                                    style="@style/sizeTextView"  />
+
+                                <TextView
+                                    android:visibility="gone"
+                                    android:id="@+id/tv_4"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:ellipsize="marquee"
+                                    android:gravity="center_vertical"
+                                    android:text="Comentario de aprobación"
+                                    android:textColor="@color/colorPrimary"
+                                    style="@style/sizeTextView"  />
+
+                                <TextView
+                                    android:visibility="gone"
+                                    android:id="@+id/tv_comentario_aprov"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:ellipsize="marquee"
+                                    android:gravity="center_vertical"
+                                    android:text=""
+                                    android:textStyle="bold"
+                                    style="@style/sizeTextView"  />
+
+                                <TextView
+                                    android:id="@+id/TV_STD_DOC"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:ellipsize="marquee"
+                                    android:gravity="center_vertical"
+                                    android:text="Condicion Pago: CONTADO TRANSFERENCIA"
+                                    android:textColor="@color/colorPrimary"
+                                    style="@style/sizeTextView"  />
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!--FIN CABECERA-->
+            <!--sección PRODUCTOS-->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_view_jobs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="#FFF"
+                android:elevation="20dp"
+                android:minHeight="70dp"
+                card_view:cardCornerRadius="10dp"
+                card_view:contentPadding="15dp">
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="103dp"
+                    android:minHeight="40dp"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+
+
+                    <RelativeLayout
+                        android:layout_width="120dp"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/ic_productos"
+                            android:layout_width="52dp"
+                            android:layout_height="52dp"
+
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/ic_base"
+                            android:fontFamily="sans-serif-condensed"
+                            android:padding="15dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/ic_almacen"
+                            app:tint="@color/colorPrimary" />
+
+                        <TextView
+                            style="@style/sizeTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/ic_productos"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="10dp"
+                            android:singleLine="true"
+                            android:text="Productos" />
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:id="@+id/list_jobs"
+                        android:layout_width="0dp"
+                        android:layout_height="90dp"
+                        android:layout_weight="100"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical"
+                        android:weightSum="100">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:gravity="center_horizontal"
+                            android:text="Ver listado de cotización" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <!--FIN PRODUCTOS-->
+            <!--Observaciones-->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_view_solutions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="#FFF"
+                android:elevation="20dp"
+                android:minHeight="70dp"
+                card_view:cardCornerRadius="10dp"
+                card_view:contentPadding="15dp">
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="40dp"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+
+
+                    <RelativeLayout
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/ic_observaciones"
+                            android:layout_width="52dp"
+                            android:layout_height="52dp"
+
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/ic_base"
+                            android:fontFamily="sans-serif-condensed"
+                            android:padding="15dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/ic_add_photo"
+                            app:tint="@color/colorPrimary" />
+
+                        <TextView
+                            style="@style/sizeTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/ic_observaciones"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="10dp"
+                            android:singleLine="true"
+                            android:text="Observaciones" />
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:id="@+id/list_solutions"
+                        android:layout_width="0dp"
+                        android:layout_height="61dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="100"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical"
+                        android:weightSum="100">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:gravity="center_horizontal"
+                            android:text="Inrgese las Observaciones" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <!--Fin Observaciones-->
+            <!--sección TOTALES-->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_view_vehicle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="#FFF"
+                android:elevation="20dp"
+                android:minHeight="70dp"
+                card_view:cardCornerRadius="10dp"
+                card_view:contentPadding="15dp">
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="40dp"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+
+
+                    <RelativeLayout
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical">
+
+                        <ImageView
+                            android:id="@+id/ic_info_vehicle"
+                            android:layout_width="52dp"
+                            android:layout_height="52dp"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/ic_base"
+                            android:fontFamily="sans-serif-condensed"
+                            android:padding="15dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/ic_money"
+                            app:tint="@color/colorPrimary" />
+
+                        <TextView
+                            style="@style/sizeTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/ic_info_vehicle"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="10dp"
+                            android:text="Totales" />
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="100"
+                        android:orientation="vertical"
+
+                        android:weightSum="100">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="50"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+                                <TextView
+                                    style="@style/sizeTextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:ellipsize="marquee"
+                                    android:gravity="center_vertical"
+                                    android:text="Sub-Total:"
+                                    android:textColor="@color/colorPrimary" />
+
+                                <TextView
+                                    android:id="@+id/tv_subtotal"
+                                    style="@style/sizeTextView"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:ellipsize="marquee"
+                                    android:gravity="end"
+                                    android:text="S/. 1,271.19"
+                                    android:textColor="@color/colorPrimary" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+                                <TextView
+                                    style="@style/sizeTextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:ellipsize="marquee"
+                                    android:gravity="center_vertical"
+                                    android:text="Valor Venta: "
+                                    android:textColor="@color/colorPrimary" />
+
+                                <TextView
+                                    android:id="@+id/tv_valorventa"
+                                    style="@style/sizeTextView"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:ellipsize="marquee"
+                                    android:gravity="end"
+                                    android:text="S/. 1,271.19"
+                                    android:textColor="@color/colorPrimary" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+                                <TextView
+                                    style="@style/sizeTextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:ellipsize="marquee"
+                                    android:gravity="center_vertical"
+                                    android:text="IGV 18%: "
+                                    android:textColor="@color/colorPrimary" />
+
+                                <TextView
+                                    android:id="@+id/tv_igv"
+                                    style="@style/sizeTextView"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:ellipsize="marquee"
+                                    android:gravity="end"
+                                    android:text="S/. 1,271.19"
+                                    android:textColor="@color/colorPrimary" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+                                <TextView
+                                    style="@style/sizeTextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:ellipsize="marquee"
+                                    android:gravity="center_vertical"
+                                    android:text="Importe Total:"
+                                    android:textColor="@color/colorPrimary" />
+
+                                <TextView
+                                    android:id="@+id/tv_importe"
+                                    style="@style/sizeTextView"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:ellipsize="marquee"
+                                    android:gravity="end"
+                                    android:text="S/. 1,271.19"
+                                    android:textColor="@color/colorPrimary" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <!--FIN TOTALES-->
+
+        </LinearLayout>
+
+        <!---->
+    </ScrollView>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="@dimen/fab_margin"
+        android:rotation="90"
+        android:layout_marginBottom="16dp"
+        app:srcCompat="@drawable/ic_more" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="12dp"
+            android:textColor="@color/colorBackground"
+            android:background="@color/colorPrimary"
+            android:layout_width="180dp"
+            android:text="Guardar y Salir"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="12dp"
+            android:textColor="@color/colorPrimary"
+            android:background="@color/colorBackground"
+            android:layout_width="180dp"
+            android:text="Cancelar"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.ConsultaStock.GalleryFragment"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/activate_child"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="15dp"
+        android:tag="0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <RelativeLayout
+
+                android:id="@+id/date_begin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#00000000"
+                android:clickable="true"
+                android:minHeight="48dp">
+
+                <TextView
+                    style="@style/sizeTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="22dp"
+                    android:fontFamily="sans-serif-condensed"
+                    android:text="Filtrar Por: "
+                    android:textColor="@color/negro" />
+
+                <Spinner
+                    android:id="@+id/sp_filtro"
+                    style="@style/sizeTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="85dp"
+                    android:layout_marginTop="22dp"
+                    android:fontFamily="sans-serif-condensed"
+                    android:gravity="center_horizontal"
+                    android:text="01/01/1900"
+                    android:textColor="@color/negro" />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/date_end"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#00000000"
+                android:clickable="true"
+                android:minHeight="48dp">
+
+                <ImageView
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_marginStart="10dp"
+                    android:src="@drawable/ic_appointment"
+                    android:visibility="gone"
+                    app:tint="@color/colorPrimary" />
+
+                <TextView
+                    style="@style/sizeTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="sans-serif-condensed"
+                    android:text="Filtro: "
+                    android:textColor="@color/negro" />
+
+                <EditText
+                    android:id="@+id/et_filtro"
+                    style="@style/sizeTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="70dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="sans-serif-condensed"
+                    android:gravity="center_horizontal"
+                    android:hint="Ingrese parametro de filtrado"
+                    android:textColor="@color/negro" />
+
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/bt_buscar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="10dp"
+                android:background="@drawable/button_login"
+                android:text="Aplicar filtro"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                style="@style/sizeTextView"
+                android:typeface="normal" />
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/sv_consultastocks"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:iconifiedByDefault="false"
+        android:layout_marginTop="10dp"
+        app:defaultQueryHint="Consulta Stocks"
+        app:layout_constraintBottom_toTopOf="@+id/rv_cunsultaStocks"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.0"
+        app:queryHint="Consulta Stocks" />
+
+    <LinearLayout
+        android:id="@+id/ll_contenedor"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_cunsultaStocks"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_height="match_parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="60dp"
+            tools:ignore="MissingConstraints" />
+    </LinearLayout>
+
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/ll_cargando"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <include layout="@layout/item_cargando_stock"/>
+            <include layout="@layout/item_cargando_stock"/>
+            <include layout="@layout/item_cargando_stock"/>
+            <include layout="@layout/item_cargando_stock"/>
+            <include layout="@layout/item_cargando_stock"/>
+            <include layout="@layout/item_cargando_stock"/>
+            <include layout="@layout/item_cargando_stock"/>
+            <include layout="@layout/item_cargando_stock"/>
+
+
+
+        </LinearLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+
+
+
+
+</LinearLayout>

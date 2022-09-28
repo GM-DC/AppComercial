@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.unosoft.ecomercialapp.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_gallery"
+        android:name="com.unosoft.ecomercialapp.ui.ConsultaStock.GalleryFragment"
+        android:label="@string/menu_gallery"
+        tools:layout="@layout/fragment_gallery" />
+
+    <fragment
+        android:id="@+id/nav_slideshow"
+        android:name="com.unosoft.ecomercialapp.ui.Cotizacion.FramentCotizacion"
+        android:label="@string/menu_slideshow"
+        tools:layout="@layout/fragment_cotizacion" >
+        <action
+            android:id="@+id/action_nav_slideshow_pop"
+            app:popUpTo="@id/nav_slideshow"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/pedidosFragment2"
+        android:name="com.unosoft.ecomercialapp.ui.pedidos.PedidosFragment"
+        android:label="Pedidos"
+        tools:layout="@layout/fragment_pedidos">
+        <action
+            android:id="@+id/action_pedidosFragment2_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/activityConsultaCliente"
+        android:name="com.unosoft.ecomercialapp.ui.Cliente.ActivityConsultaCliente"
+        android:label="Consulta Clientes"
+        tools:layout="@layout/fragment_activity_consulta_cliente">
+        <action
+            android:id="@+id/action_activityConsultaCliente_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/activityCotizacion"
+        android:name="com.unosoft.ecomercialapp.ui.Cotizacion.FramentCotizacion"
+        android:label="Cotizacion"
+        tools:layout="@layout/fragment_cotizacion">
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/cerrarSesionFrament"
+        android:name="com.unosoft.ecomercialapp.ui.CerrarSesion.CerrarSesionFrament"
+        android:label="Cerrar Sesión"
+        tools:layout="@layout/fragment_cerrar_sesion_frament" />
+    <fragment
+        android:id="@+id/sincTablaBassicaFragment"
+        android:name="com.unosoft.ecomercialapp.ui.SincTablaBasica.SincTablaBassicaFragment"
+        android:label="Sincronización Maestros"
+        tools:layout="@layout/fragment_sinc_tabla_bassica" />
+
+</navigation>
