@@ -15,7 +15,11 @@
         android:id="@+id/nav_gallery"
         android:name="com.unosoft.ecomercialapp.ui.ConsultaStock.GalleryFragment"
         android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/fragment_gallery" >
+        <action
+            android:id="@+id/action_nav_gallery_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_slideshow"
@@ -66,6 +70,10 @@
         android:id="@+id/sincTablaBassicaFragment"
         android:name="com.unosoft.ecomercialapp.ui.SincTablaBasica.SincTablaBassicaFragment"
         android:label="Sincronización Maestros"
-        tools:layout="@layout/fragment_sinc_tabla_bassica" />
+        tools:layout="@layout/fragment_sinc_tabla_bassica" >
+        <action
+            android:id="@+id/action_sincTablaBassicaFragment_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
 
 </navigation>

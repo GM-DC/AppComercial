@@ -40,9 +40,6 @@ class GalleryFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         apiInterface = APIClient.client?.create(StocksApi::class.java) as StocksApi
-
-
-
         initStocks()
         buscaStock()
         busquedaSpinner()
@@ -62,24 +59,19 @@ class GalleryFragment : Fragment() {
 
         sp_filtro?.onItemSelectedListener = object :
             AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
+            override fun onItemSelected(parent: AdapterView<*>?,view: View?,position: Int,id: Long) {
                 itemSelect = lista[position]
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {}
+
         }
 
         val llCargando = requireView().findViewById<LinearLayout>(R.id.ll_cargando)
         llCargando.isVisible = false
 
         bt_buscar?.setOnClickListener {
-            val imm =
-                requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            val imm = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             imm.hideSoftInputFromWindow(requireView().windowToken, 0)
 
             llCargando.isVisible = true
@@ -101,8 +93,7 @@ class GalleryFragment : Fragment() {
 
     fun initStocks() {
         val rv_cunsultaStocks = view?.findViewById<RecyclerView>(R.id.rv_cunsultaStocks)
-        rv_cunsultaStocks?.layoutManager =
-            LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
+        rv_cunsultaStocks?.layoutManager =LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
         adapterStocks = listconsultastocks(listaConsultaStocks)
         rv_cunsultaStocks?.adapter = adapterStocks
     }
@@ -119,19 +110,16 @@ class GalleryFragment : Fragment() {
 
         CoroutineScope(Dispatchers.IO).launch {
             val response = apiInterface!!.getStockForName("$nomeProducto")
-            activity?.runOnUiThread {
+            activity!!.runOnUiThread {
                 if (response.isSuccessful) {
-
                     llContenedor.isVisible = true
                     llCargando.isVisible = false
-
                     listaConsultaStocks.clear()
                     listaConsultaStocks.addAll(response.body()!!)
-                    pd.cancel()
                     adapterStocks.notifyDataSetChanged()
+                    pd.cancel()
                 } else {
                     pd.cancel()
-                    println("Error en la conaulta ")
                 }
             }
         }
@@ -157,8 +145,8 @@ class GalleryFragment : Fragment() {
 
                     listaConsultaStocks.clear()
                     listaConsultaStocks.addAll(response.body()!!)
-                    pd.cancel()
                     adapterStocks.notifyDataSetChanged()
+                    pd.cancel()
                 } else {
                     pd.cancel()
                     println("Error en la conaulta ")
@@ -181,21 +169,20 @@ class GalleryFragment : Fragment() {
             val response = apiInterface!!.getStockForCdgRef("$CdgRef")
             activity?.runOnUiThread {
                 if (response.isSuccessful) {
-
                     llContenedor.isVisible = true
                     llCargando.isVisible = false
 
-
                     listaConsultaStocks.clear()
                     listaConsultaStocks.addAll(response.body()!!)
-                    pd.cancel()
                     adapterStocks.notifyDataSetChanged()
+                    pd.cancel()
                 } else {
                     pd.cancel()
                     println("Error en la conaulta ")
                 }
             }
         }
+
     }
 
     fun buscaStock() {
@@ -206,7 +193,6 @@ class GalleryFragment : Fragment() {
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                println("$newText")
                 filter(newText.toString())
                 return false
             }

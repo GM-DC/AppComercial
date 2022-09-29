@@ -67,8 +67,7 @@ class InicioActivity : AppCompatActivity() {
         cargarTablaBasica()
 
         val navController = findNavController(R.id.nav_host_fragment_content_inicio)
-        appBarConfiguration = AppBarConfiguration(setOf( R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow ), drawerLayout
-        )
+        appBarConfiguration = AppBarConfiguration(setOf( R.id.nav_home, R.id.nav_slideshow), drawerLayout)
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
