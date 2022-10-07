@@ -10,5 +10,5 @@ data class productocomercial(
     val factor_Conversion: Double?,
     val cdg_Unidad: String,
     val unidad: String,
-    val moneda_Lp: String
+    val moneda_Lp: String,
 )

@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.unosoft.ecomercialapp.R
 import com.unosoft.ecomercialapp.entity.Cotizacion.cotizacionesDto
+import com.unosoft.ecomercialapp.helpers.utils
 
 import kotlin.collections.ArrayList
 
@@ -44,8 +45,14 @@ class listcotizacionesadapter(var cotizaciones: ArrayList<cotizacionesDto>, priv
 
             lblnrazonsocial.setTypeface(null, Typeface.BOLD)
             lblntotal.setTypeface(null, Typeface.BOLD)
-            lblntotal.text = StringBuilder().append("IMPORTE TOTAL ").append(cotizaciones.mon+". ").append(String.format("%,.2f", cotizaciones.importe_total))
-            lblnrruc.text = StringBuilder().append(cotizaciones.documento+": ").append(cotizaciones.ruc)
+
+            lblntotal.text = "IMPORTE TOTAL ${cotizaciones.mon} ${utils().pricetostringformat(cotizaciones.importe_total)}"
+
+            if (cotizaciones.documento.isNullOrBlank()){
+                cotizaciones.documento = "DOC"
+            }
+
+            lblnrruc.text = "${cotizaciones.documento}: ${cotizaciones.ruc}"
 
             itemView.setOnClickListener {
                 onClickListener(cotizaciones)

@@ -1,4 +1,5 @@
-<androidx.cardview.widget.CardView android:id="@+id/cardViewItemRepuesto"
+<androidx.cardview.widget.CardView
+    android:id="@+id/cardViewItemRepuesto"
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -12,14 +13,14 @@
 
     <LinearLayout
         android:layout_width="402dp"
-        android:layout_height="198dp"
+        android:layout_height="148dp"
         android:background="#e4e4e4"
         android:orientation="vertical"
         android:padding="20dp">
 
         <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="153dp">
+            android:layout_height="103dp">
 
             <ImageView
                 android:layout_width="36dp"
@@ -28,6 +29,7 @@
                 android:layout_marginStart="10dp"
                 android:src="@drawable/ic_almacen"
                 app:tint="@color/colorPrimaryDark" />
+
 
             <TextView
                 android:id="@+id/name"
@@ -38,8 +40,8 @@
                 android:layout_marginTop="10dp"
                 android:fontFamily="sans-serif-condensed"
                 android:text="MOUSE ERGONOMICO KLIP"
-                android:textStyle="bold"
-                android:textColor="@color/negro" />
+                android:textColor="@color/negro"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/document"
@@ -77,22 +79,17 @@
                 android:textColor="@color/negro" />
 
             <LinearLayout
-
-                android:layout_width="220dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/document"
+                android:layout_marginRight="30dp"
                 android:layout_alignParentEnd="true"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="47dp"
-                android:layout_marginEnd="50dp"
-                android:gravity="center_vertical|center_horizontal"
+                android:layout_centerVertical="true"
                 android:orientation="horizontal">
 
                 <ImageView
                     android:id="@+id/increase"
-                    android:layout_width="50dp"
-                    android:layout_height="30dp"
-                    android:layout_centerInParent="true"
+                    android:layout_width="30dp"
+                    android:layout_height="25dp"
                     android:background="@drawable/btn_image_view"
                     android:src="@drawable/ic_add"
                     app:tint="@color/colorPrimaryDark" />
@@ -100,19 +97,20 @@
                 <TextView
                     android:id="@+id/quantity"
                     style="@style/sizeTextView"
-                    android:layout_width="40dp"
-                    android:layout_height="50dp"
-                    android:layout_centerInParent="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="8dp"
                     android:fontFamily="sans-serif-condensed"
                     android:gravity="center"
                     android:text="3"
-                    android:textColor="@color/negro" />
+                    android:textAlignment="center"
+                    android:textColor="@color/negro"
+                    android:textSize="15sp" />
 
                 <ImageView
                     android:id="@+id/decrease"
-                    android:layout_width="50dp"
-                    android:layout_height="30dp"
-                    android:layout_centerInParent="true"
+                    android:layout_width="30dp"
+                    android:layout_height="25dp"
                     android:background="@drawable/btn_image_view"
                     android:src="@drawable/ic_less"
                     app:tint="@color/colorPrimaryDark" />
@@ -128,5 +126,6 @@
             android:layout_height="7dp"
             android:layout_alignParentBottom="true"
             android:background="@color/colorPrimaryDark" />
+
     </LinearLayout>
 </androidx.cardview.widget.CardView>

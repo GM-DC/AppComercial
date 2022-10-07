@@ -41,6 +41,7 @@ class ActivityAddCotizacion : AppCompatActivity() {
     var apiInterface: ApiCotizacion? = null
 
     var tipomoneda = ""
+    var detalle:String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -288,7 +289,7 @@ class ActivityAddCotizacion : AppCompatActivity() {
                                 sucursal=datoslogin.sucursal,
                                 tipO_ENTREGA="",
                                 diaS_ENTREGA2=0,
-                                observacioN2="",
+                                observacioN2=binding.tvObsCotizacion.text.toString(),
                                 costo=0,
                                 iD_OPORTUNIDAD=0,
                                 motivO_PERDIDA="",
@@ -363,7 +364,7 @@ class ActivityAddCotizacion : AppCompatActivity() {
         val bt_guardarDetalle = dialogue.findViewById<Button>(R.id.bt_guardarDetalle)
         //*********** BOTON GUARDAR DEL DIALOGO ********
         bt_guardarDetalle.setOnClickListener {
-            var detalle:String = et_detalle.text.toString()
+            detalle = et_detalle.text.toString()
             binding.tvObsCotizacion.text = detalle
             dialogue.hide()
         }

@@ -48,12 +48,18 @@ class ActivityDetalleCotizacion : AppCompatActivity() {
     fun productosListado() {
         val rv_listproductcot = findViewById<RecyclerView>(R.id.rv_listproductcot)
         rv_listproductcot?.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
-        productlistcotadarte = productlistcotadarte(listaProductoListados) { data -> onItemDatosProductList(data) }
+        productlistcotadarte = productlistcotadarte(
+            listaProductoListados,
+            onItemPosition = { position -> onItemPosition(position) },
+        )
+        calcularMontoTotal()
         rv_listproductcot?.adapter = productlistcotadarte
     }
-    private fun onItemDatosProductList(data: productlistcot) {
+
+    private fun onItemPosition(position: Int) {
 
     }
+
 
     fun getData() {
         CoroutineScope(Dispatchers.IO).launch {

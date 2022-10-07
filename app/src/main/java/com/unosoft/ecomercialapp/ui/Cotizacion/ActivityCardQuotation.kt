@@ -5,13 +5,12 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
-import android.widget.Toast
+import android.view.View
+import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
+import androidx.core.widget.doAfterTextChanged
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -36,13 +35,13 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class ActivityCardQuotation : AppCompatActivity() {
-
     private lateinit var binding: ActivityCardQuotationBinding
+    //********************************************************
 
     private lateinit var adapterProductoComercial: productocomercialadapter
     private lateinit var productlistcotadarte: productlistcotadarte
 
-    private val listaProductoCotizacion = ArrayList<productocomercial>()
+    private val listaProductoCotizacion = ArrayList<productlistcot>()
     private val listaProductoListados = ArrayList<productlistcot>()
 
 
@@ -53,6 +52,7 @@ class ActivityCardQuotation : AppCompatActivity() {
     var subtotal:Double = 0.0
 
     var tipomoneda = ""
+    var itemSelect: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,15 +66,15 @@ class ActivityCardQuotation : AppCompatActivity() {
         getData()
 
         productosListado()
-        abrirListProductos()
+        enableSwipeToDelete()
         eventsHandlers()
     }
 
     private fun eventsHandlers() {
         binding.btnGuardarCartCotizacion.setOnClickListener { guardarDatos() }
         binding.btnCancelarCartCotizacion.setOnClickListener { cancelarCotizacion() }
+        binding.iconAddMoreProductList.setOnClickListener{ abrirListProductos() }
     }
-
     private fun cancelarCotizacion() {
         CoroutineScope(Dispatchers.IO).launch{
             if(listaProductoListados.isNotEmpty()){
@@ -89,11 +89,8 @@ class ActivityCardQuotation : AppCompatActivity() {
                 }
             }
         }
-
-
     }
-
-    fun alerDialogueCard(){
+    private fun alerDialogueCard(){
         val dialog = SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE,)
 
         dialog.setTitleText("Cancelar")
@@ -124,7 +121,6 @@ class ActivityCardQuotation : AppCompatActivity() {
         }
         dialog.show()
     }
-
     private fun guardarDatos() {
         guardarListRoom()
 
@@ -132,7 +128,6 @@ class ActivityCardQuotation : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
-
     //********* INICIA DATOS  **************
     fun getData() {
         CoroutineScope(Dispatchers.IO).launch {
@@ -161,186 +156,143 @@ class ActivityCardQuotation : AppCompatActivity() {
 
     //************  PRODUCTOS LISTADOS *************
     fun productosListado() {
-        val rv_listproductcot = binding.rvListProdut
-        rv_listproductcot.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
-        productlistcotadarte = productlistcotadarte(listaProductoListados) { data -> onItemDatosProductList(data) }
-        rv_listproductcot.adapter = productlistcotadarte
-
-        //**************** Implementacion de Swiped ********************
-        val itemswipe = object : ItemTouchHelper.SimpleCallback(0,
-            ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
-        ){
-            override fun onMove(
-                recyclerView: RecyclerView,
-                viewHolder: RecyclerView.ViewHolder,
-                target: RecyclerView.ViewHolder
-            ): Boolean { return false }
-
-            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                listaProductoListados.removeAt(viewHolder.bindingAdapterPosition)
-                calcularMontoTotal()
-                rv_listproductcot?.adapter?.notifyDataSetChanged()
-            }
-        }
-        val swap =  ItemTouchHelper(itemswipe)
-        swap.attachToRecyclerView(rv_listproductcot)
-
-
+        binding.rvListProdut.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+        productlistcotadarte = productlistcotadarte(
+            datos = listaProductoListados,
+            onItemPosition = { position -> onItemPosition(position) },
+        )
+        binding.rvListProdut.adapter = productlistcotadarte
     }
-    fun onItemDatosProductList(data: productlistcot) {
+
+    private fun onItemPosition(position: Int) {
+        val data = listaProductoListados[position]
+
         //***********  Alerta de Dialogo  ***********
         val builder = AlertDialog.Builder(this)
-        val vista = layoutInflater.inflate(R.layout.item_productocomericaldetallado, null)
+        val vista = layoutInflater.inflate(R.layout.item_add_product_list_edit, null)
         vista.setBackgroundResource(R.color.transparent)
 
         builder.setView(vista)
 
         val dialog = builder.create()
-        dialog.window!!.setGravity(Gravity.TOP)
+        dialog.window!!.setGravity(Gravity.CENTER)
         dialog.show()
-        //*********************************************
 
-        //********************    DECLARA LOS COMPONENTES   ******************
-        val tv_nameProducto = vista.findViewById<TextView>(R.id.tv_nameProducto)
-        val tv_codProducto = vista.findViewById<TextView>(R.id.tv_codProducto)
-        val tv_precioUnidad = vista.findViewById<TextView>(R.id.tv_precioUnidad)
-        val tv_precioTotal = vista.findViewById<TextView>(R.id.tv_precioTotal)
-        val tv_cantidad = vista.findViewById<TextView>(R.id.tv_cantidad)
-        val iv_btnAutementar = vista.findViewById<ImageView>(R.id.iv_btnAutementar)
-        val iv_btnDisminuir = vista.findViewById<ImageView>(R.id.iv_btnDisminuir)
-        val iv_cerrarProducto = vista.findViewById<ImageView>(R.id.iv_cerrarProducto)
+        var tv_nameProducto  = vista.findViewById<TextView>(R.id.tv_nameProducto)
+        val tv_codProducto  = vista.findViewById<TextView>(R.id.tv_codProducto)
+        val tv_precioUnidad  = vista.findViewById<TextView>(R.id.tv_precioUnidad)
+        val tv_precioUnidadDinero  = vista.findViewById<EditText>(R.id.tv_precioUnidadDinero)
+        val tv_precioTotal  = vista.findViewById<TextView>(R.id.tv_precioTotal)
+        val tv_precioTotalDinero  = vista.findViewById<TextView>(R.id.tv_precioTotalDinero)
+        val iv_btnAutementar  = vista.findViewById<ImageView>(R.id.iv_btnAutementar)
+        val tv_cantidad  = vista.findViewById<EditText>(R.id.tv_cantidad)
+        val iv_btnDisminuir  = vista.findViewById<ImageView>(R.id.iv_btnDisminuir)
+        val iv_btnGuardar  = vista.findViewById<Button>(R.id.iv_btnGuardar)
+        val iv_btnCerrar  = vista.findViewById<ImageView>(R.id.iv_btnCerrar)
+        val tv_cantidadTexto  = vista.findViewById<TextView>(R.id.tv_cantidadTexto)
 
-        //********   SETEA VALORES INICIALES
-        val evalua = buscaCoincidencia(data.codigo!!)
-        val action = evalua[0]
-        val pos = evalua[1]
 
         tv_nameProducto.text = data.nombre
         tv_codProducto.text = data.codigo
-        tv_precioUnidad.text = "${data.mon} ${utils().pricetostringformat(data.precio_Venta)}"
-        tv_precioTotal.text = "${data.mon} ${utils().pricetostringformat(calculatepricebyqty(tv_cantidad.text.toString().toInt(), data.precio_Venta))}"
+        tv_precioUnidad.text = "P. Unit: ${data.mon} "
+        tv_precioUnidadDinero.setText(data.precioUnidad.toString())
+        tv_precioTotal.text = "P. Total: ${data.mon} "
+        tv_precioTotalDinero.text = data.precioTotal.toString()
+        tv_cantidad.setText(data.cantidad.toString())
+        tv_cantidadTexto.text = "Cantidad: ${data.cantidad} ${data.unidad}"
 
-        if (action == 0) {
-            tv_cantidad.text = "0"
-            tv_precioTotal.text = "0"
-        } else {
-            tv_cantidad.text = listaProductoListados[pos].cantidad.toString()
-            tv_precioTotal.text = "${data.mon} ${utils().pricetostringformat(calculatepricebyqty(tv_cantidad.text.toString().toInt(), data.precio_Venta))}"
+        iv_btnAutementar.setOnClickListener {
+            data.cantidad = data.cantidad + 1
+            tv_cantidad.setText(data.cantidad.toString())
+            val precioUnitario = tv_precioUnidadDinero.text.toString().toDouble()
+            data.precioTotal = precioUnitario*data.cantidad
+            tv_precioTotalDinero.text = (utils().pricetostringformat(data.precioTotal))
+            tv_cantidadTexto.text = "Cantidad: ${data.cantidad} ${data.unidad}"
         }
-
-        iv_cerrarProducto.setOnClickListener {
+        iv_btnDisminuir.setOnClickListener {
+            if(data.cantidad>0){
+                data.cantidad = data.cantidad - 1
+                tv_cantidad.setText(data.cantidad.toString())
+                val precioUnitario = tv_precioUnidadDinero.text.toString().toDouble()
+                data.precioTotal = precioUnitario*data.cantidad
+                tv_precioTotalDinero.text = (utils().pricetostringformat(data.precioTotal))
+                tv_cantidadTexto.text = "Cantidad: ${data.cantidad} ${data.unidad}"
+            }
+        }
+        tv_precioUnidadDinero.doAfterTextChanged{
+            if(it.isNullOrBlank()){
+                data.precioUnidad = 0.0
+                data.cantidad = tv_cantidad.text.toString().toInt()
+                data.precioTotal = data.cantidad*data.precioUnidad
+                tv_precioTotalDinero.setText(utils().pricetostringformat((data.precioTotal)))
+                tv_cantidadTexto.text = "Cantidad: ${data.cantidad} ${data.unidad}"
+            }else{
+                data.precioUnidad = it.toString().toDouble()
+                data.cantidad = tv_cantidad.text.toString().toInt()
+                data.precioTotal = data.cantidad*data.precioUnidad
+                tv_precioTotalDinero.setText(utils().pricetostringformat((data.precioTotal)))
+                tv_cantidadTexto.text = "Cantidad: ${data.cantidad} ${data.unidad}"
+            }
+        }
+        tv_cantidad.doAfterTextChanged{
+            if(it.isNullOrBlank()){
+                data.cantidad = 0
+                data.precioUnidad = tv_precioUnidadDinero.text.toString().toDouble()
+                data.precioTotal = data.cantidad*data.precioUnidad
+                tv_precioTotalDinero.setText(utils().pricetostringformat((data.precioTotal)))
+                tv_cantidadTexto.text = "Cantidad: ${data.cantidad} ${data.unidad}"
+            }else{
+                data.cantidad = it.toString().toInt()
+                data.precioUnidad = tv_precioUnidadDinero.text.toString().toDouble()
+                data.precioTotal = data.cantidad*data.precioUnidad
+                tv_precioTotalDinero.setText(utils().pricetostringformat((data.precioTotal)))
+                tv_cantidadTexto.text = "Cantidad: ${data.cantidad} ${data.unidad}"
+            }
+        }
+        iv_btnGuardar.setOnClickListener {
+            listaProductoListados[position] = productlistcot(
+                id_Producto= data.id_Producto,
+                codigo= data.codigo,
+                codigo_Barra= data.codigo_Barra,
+                nombre= data.nombre,
+                mon= data.mon,
+                precio_Venta= data.precio_Venta,
+                factor_Conversion= data.factor_Conversion,
+                cdg_Unidad= data.cdg_Unidad,
+                unidad= data.unidad,
+                moneda_Lp= data.moneda_Lp,
+                cantidad= data.cantidad,
+                precioUnidad= data.precioUnidad,
+                precioTotal= data.precioTotal)
+            productlistcotadarte.notifyItemChanged(position)
+            calcularMontoTotal()
+            Toast.makeText(this, "Actualizado", Toast.LENGTH_SHORT).show()
             dialog.hide()
             dialog.cancel()
         }
-
-        //********   AUMENTA PRODUCTOS O AGREGA    *************
-        iv_btnAutementar.setOnClickListener {
-            val rv_listproductcot = binding.rvListProdut
-
-            val buscador = buscaCoincidencia(data.codigo)
-            val action = buscador[0]
-            val pos = buscador[1]
-            var cantidad = 0
-
-            //----------------  AGREGA O AUMENTA LA CANTIDAD -------------------
-            if (action == 0) {
-                cantidad += 1
-                tv_cantidad.text = cantidad.toString()
-                val precioTotal: Double = calculatepricebyqty(cantidad, data.precio_Venta)
-                tv_precioTotal.text = "${data.mon} ${utils().pricetostringformat(precioTotal)}"
-                listaProductoListados.add(
-                    productlistcot(
-                        data.id_Producto,
-                        data.codigo,
-                        data.codigo_Barra,
-                        data.nombre,
-                        data.mon,
-                        data.precio_Venta,
-                        data.factor_Conversion,
-                        data.cdg_Unidad,
-                        data.unidad,
-                        data.moneda_Lp,
-                        cantidad,
-                        data.precio_Venta,
-                        precioTotal
-                    )
-                )
-                rv_listproductcot.adapter?.notifyDataSetChanged()
-                rv_listproductcot?.scrollToPosition(listaProductoListados.size - 1)
-            } else {
-                val lt = listaProductoListados[pos]
-                var cantidad = lt.cantidad + 1
-                tv_cantidad.text = cantidad.toString()
-                val precioTotal: Double = calculatepricebyqty(cantidad, data.precio_Venta)
-                tv_precioTotal.text = "${data.mon} ${utils().pricetostringformat(precioTotal)}"
-                listaProductoListados[pos] = productlistcot(
-                    data.id_Producto,
-                    data.codigo,
-                    data.codigo_Barra,
-                    data.nombre,
-                    data.mon,
-                    data.precio_Venta,
-                    data.factor_Conversion,
-                    data.cdg_Unidad,
-                    data.unidad,
-                    data.moneda_Lp,
-                    cantidad,
-                    data.precio_Venta,
-                    precioTotal
-                )
-                rv_listproductcot?.adapter?.notifyDataSetChanged()
-            }
-            //-------------------------------------------------------------------
-            calcularMontoTotal()
-            productlistcotadarte.notifyDataSetChanged()
-
-        }
-        //********   DISMINUYE PRODUCTOS O ELIMINA    *************
-        iv_btnDisminuir.setOnClickListener {
-            val rv_listproductcot = binding.rvListProdut
-
-            val buscador = buscaCoincidencia(data.codigo)
-            val action = buscador[0]
-            val pos = buscador[1]
-
-            //----------------  AGREGA O AUMENTA LA CANTIDAD -------------------
-            if (action != 0) {
-                val lt = listaProductoListados[pos]
-                var cantidad = lt.cantidad - 1
-                val precioTotal: Double = calculatepricebyqty(cantidad, data.precio_Venta)
-                listaProductoListados[pos] = productlistcot(
-                    data.id_Producto,
-                    data.codigo,
-                    data.codigo_Barra,
-                    data.nombre,
-                    data.mon,
-                    data.precio_Venta,
-                    data.factor_Conversion,
-                    data.cdg_Unidad,
-                    data.unidad,
-                    data.moneda_Lp,
-                    cantidad,
-                    data.precio_Venta,
-                    precioTotal)
-                tv_cantidad.text = cantidad.toString()
-                tv_precioTotal.text = "${data.mon} ${utils().pricetostringformat(precioTotal)}"
-                rv_listproductcot?.adapter?.notifyDataSetChanged()
-                if (cantidad == 0) {
-                    listaProductoListados.removeAt(pos)
-                    rv_listproductcot?.adapter?.notifyDataSetChanged()
-                }
-            } else {
-                println("no hay productos que conincidan")
-            }
-            //-------------------------------------------------------------------
-            calcularMontoTotal()
-            productlistcotadarte.notifyDataSetChanged()
+        iv_btnCerrar.setOnClickListener {
+            dialog.hide()
+            dialog.cancel()
         }
     }
+
+    fun enableSwipeToDelete(){
+        val itemswipe = object : ItemTouchHelper.SimpleCallback(0,
+            ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT){
+            override fun onMove(recyclerView: RecyclerView,viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder): Boolean { return false }
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                println(viewHolder.bindingAdapterPosition)
+                listaProductoListados.removeAt(viewHolder.bindingAdapterPosition)
+                productlistcotadarte.notifyItemRemoved(viewHolder.bindingAdapterPosition)
+                calcularMontoTotal()
+            }
+        }
+        val swap =  ItemTouchHelper(itemswipe)
+        swap.attachToRecyclerView(binding.rvListProdut)
+    }
+
     fun abrirListProductos() {
-
-        binding.iconAddMoreProductList.setOnClickListener {
-
             //***********  Alerta de Dialogo  ***********
             val builder = AlertDialog.Builder(this)
             val vista = layoutInflater.inflate(R.layout.dialogue_detalle_cotizacion_productos, null)
@@ -357,8 +309,7 @@ class ActivityCardQuotation : AppCompatActivity() {
             val iv_cerrarListProducto = vista.findViewById<ImageView>(R.id.iv_cerrarListProducto)
             val ll_contenedor = vista.findViewById<LinearLayout>(R.id.ll_contenedor)
             val ll_cargando = vista.findViewById<LinearLayout>(R.id.ll_cargando)
-
-
+            val sp_filtroListaProducto = vista.findViewById<Spinner>(R.id.sp_filtroListaProducto)
 
             iv_cerrarListProducto.setOnClickListener {
                 dialog.hide()
@@ -366,25 +317,31 @@ class ActivityCardQuotation : AppCompatActivity() {
             }
 
             rv_productos.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
-            adapterProductoComercial = productocomercialadapter(listaProductoCotizacion) { data ->
-                onItemDatosProductos(data)
-            }
+            adapterProductoComercial = productocomercialadapter(
+                datos = listaProductoCotizacion,
+                onClickListener = { data -> onItemDatosProductos(data) },
+                onClickItem = { posicion -> onClickItemAddProducto(posicion) }
+            )
             rv_productos.adapter = adapterProductoComercial
 
-            CoroutineScope(Dispatchers.IO).launch {
-                val response = apiInterface2!!.getProductoComercial("${database.daoTblBasica().getAllDataCabezera()[0].codListPrecio}", "${database.daoTblBasica().getAllDataCabezera()[0].codMoneda}", "${prefs.getTipoCambio()}")
-                runOnUiThread {
-                    if (response.isSuccessful) {
+            val listaFiltro = listOf("Nombre", "Codigo")
+            val Adaptador = ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, listaFiltro)
 
-                        ll_contenedor.isVisible = true
-                        ll_cargando.isVisible = false
+            sp_filtroListaProducto?.adapter = Adaptador
 
-                        listaProductoCotizacion.clear()
-                        listaProductoCotizacion.addAll(response.body()!!)
-                        adapterProductoComercial.notifyDataSetChanged()
-                    }
+            sp_filtroListaProducto?.onItemSelectedListener = object :
+                AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                    itemSelect = listaFiltro[position]
                 }
+
+                override fun onNothingSelected(parent: AdapterView<*>?) {}
+
             }
+
+            ll_cargando.isVisible = false
+
+            getDataListProductos(ll_contenedor,ll_cargando)
 
             sv_consultasproductos?.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                 override fun onQueryTextSubmit(query: String?): Boolean {
@@ -392,184 +349,86 @@ class ActivityCardQuotation : AppCompatActivity() {
                 }
 
                 override fun onQueryTextChange(newText: String?): Boolean {
-                    println("$newText")
-                    filter(newText.toString())
+                    filter(itemSelect!!,newText.toString())
                     return false
                 }
             })
-
-        }
     }
-    fun filter(text: String) {
-        val filterdNameProducto: ArrayList<productocomercial> = ArrayList()
-        for (i in listaProductoCotizacion.indices) {
-            if (listaProductoCotizacion[i].nombre.lowercase().contains(text.lowercase())) {
-                filterdNameProducto.add(listaProductoCotizacion[i])
+
+    private fun getDataListProductos(ll_contenedor: LinearLayout,ll_cargando: LinearLayout) {
+        CoroutineScope(Dispatchers.IO).launch {
+            val response = apiInterface2!!.getProductoComercial("${database.daoTblBasica().getAllDataCabezera()[0].codListPrecio}", "${database.daoTblBasica().getAllDataCabezera()[0].codMoneda}", "${prefs.getTipoCambio()}")
+            runOnUiThread {
+                if (response.isSuccessful) {
+                    ll_contenedor.isVisible = true
+                    ll_cargando.isVisible = false
+                    listaProductoCotizacion.clear()
+                    response.body()!!.forEach {
+                        listaProductoCotizacion.add(
+                            productlistcot(
+                                id_Producto= it.id_Producto,
+                                codigo= it.codigo,
+                                codigo_Barra= it.codigo_Barra,
+                                nombre= it.nombre,
+                                mon= it.mon,
+                                precio_Venta= it.precio_Venta!!,
+                                factor_Conversion= it.factor_Conversion,
+                                cdg_Unidad= it.cdg_Unidad,
+                                unidad= it.unidad,
+                                moneda_Lp= it.moneda_Lp,
+                                cantidad = 0,
+                                precioUnidad = 0.0,
+                                precioTotal = 0.0
+                            )
+                        )
+                    }
+                    adapterProductoComercial.notifyDataSetChanged()
+                }
             }
         }
+    }
+
+    private fun onClickItemAddProducto(posicion: Int) {
+
+    }
+
+    fun filter(campo:String,text: String) {
+        val filterdNameProducto: ArrayList<productlistcot> = ArrayList()
+
+        println("campo : ${campo}")
+        println("Cantidad : ${listaProductoCotizacion.size}")
+
+        if (campo == "Nombre"){
+            for (i in listaProductoCotizacion.indices) {
+                if (listaProductoCotizacion[i].nombre.lowercase().contains(text.lowercase())) {
+
+                    filterdNameProducto.add(listaProductoCotizacion[i])
+                }
+            }
+        }
+        if (campo == "Codigo"){
+            for (i in listaProductoCotizacion.indices) {
+                if (listaProductoCotizacion[i].codigo!!.lowercase().contains(text.lowercase())) {
+                    filterdNameProducto.add(listaProductoCotizacion[i])
+                }
+            }
+        }
+
+        println("Lista: ${filterdNameProducto}")
+
+
         adapterProductoComercial.filterList(filterdNameProducto)
     }
-    fun onItemDatosProductos(data: productocomercial) {
-        //***********  Alerta de Dialogo  ************
-        val builder = AlertDialog.Builder(this)
-        val vista = layoutInflater.inflate(R.layout.item_productocomericaldetallado, null)
-        vista.setBackgroundResource(R.color.transparent)
 
-        builder.setView(vista)
-
-        val dialog = builder.create()
-        dialog.window!!.setGravity(Gravity.TOP)
-        dialog.show()
-        //*********************************************
-
-        //********************    DECLARA LOS COMPONENTES   ******************
-        val tv_nameProducto = vista.findViewById<TextView>(R.id.tv_nameProducto)
-        val tv_codProducto = vista.findViewById<TextView>(R.id.tv_codProducto)
-        val tv_precioUnidad = vista.findViewById<TextView>(R.id.tv_precioUnidad)
-        val tv_precioTotal = vista.findViewById<TextView>(R.id.tv_precioTotal)
-        val tv_cantidad = vista.findViewById<TextView>(R.id.tv_cantidad)
-        val iv_btnAutementar = vista.findViewById<ImageView>(R.id.iv_btnAutementar)
-        val iv_btnDisminuir = vista.findViewById<ImageView>(R.id.iv_btnDisminuir)
-        val iv_cerrarProducto = vista.findViewById<ImageView>(R.id.iv_cerrarProducto)
-
-
-        //********   SETEA VALORES INICIALES
-        val evalua = buscaCoincidencia(data.codigo)
-        val action = evalua[0]
-        val pos = evalua[1]
-
-        tv_nameProducto.text = data.nombre
-        tv_codProducto.text = data.codigo
-        tv_precioUnidad.text = "${data.mon} ${utils().pricetostringformat(data.precio_Venta!!)}"
-        tv_precioTotal.text = "${data.mon} ${utils().pricetostringformat(calculatepricebyqty(tv_cantidad.text.toString().toInt(), data.precio_Venta))}"
-
-        if (action == 0) {
-            tv_cantidad.text = "0"
-            tv_precioTotal.text = "0"
-        } else {
-            tv_cantidad.text = listaProductoListados[pos].cantidad.toString()
-            tv_precioTotal.text = "${data.mon} ${utils().pricetostringformat(calculatepricebyqty(tv_cantidad.text.toString().toInt(), data.precio_Venta))}"
-        }
-
-        iv_cerrarProducto.setOnClickListener {
-            dialog.hide()
-            dialog.cancel()
-        }
-
-        //********   AUMENTA PRODUCTOS O AGREGA    *************
-        iv_btnAutementar.setOnClickListener {
-            val rv_listproductcot = binding.rvListProdut
-
-            val buscador = buscaCoincidencia(data.codigo)
-            val action = buscador[0]
-            val pos = buscador[1]
-            var cantidad = 0
-
-            //----------------  AGREGA O AUMENTA LA CANTIDAD -------------------
-            if (action == 0) {
-                cantidad += 1
-                tv_cantidad.text = cantidad.toString()
-                val precioTotal: Double = calculatepricebyqty(cantidad, data.precio_Venta)
-                tv_precioTotal.text = "${data.mon} ${utils().pricetostringformat(precioTotal)}"
-                listaProductoListados.add(
-                    productlistcot(
-                        data.id_Producto,
-                        data.codigo,
-                        data.codigo_Barra,
-                        data.nombre,
-                        data.mon,
-                        data.precio_Venta,
-                        data.factor_Conversion,
-                        data.cdg_Unidad,
-                        data.unidad,
-                        data.moneda_Lp,
-                        cantidad,
-                        data.precio_Venta,
-                        precioTotal
-                    )
-                )
-                Toast.makeText(this, "Se agrego ${data.nombre}", Toast.LENGTH_SHORT).show()
-                rv_listproductcot.adapter?.notifyDataSetChanged()
-                rv_listproductcot?.scrollToPosition(listaProductoListados.size - 1)
-            } else {
-                val lt = listaProductoListados[pos]
-                var cantidad = lt.cantidad + 1
-                tv_cantidad.text = cantidad.toString()
-                val precioTotal: Double = calculatepricebyqty(cantidad, data.precio_Venta)
-                tv_precioTotal.text = "${data.mon} ${utils().pricetostringformat(precioTotal)}"
-                listaProductoListados.set(
-                    pos,
-                    productlistcot(
-                        data.id_Producto,
-                        data.codigo,
-                        data.codigo_Barra,
-                        data.nombre,
-                        data.mon,
-                        data.precio_Venta,
-                        data.factor_Conversion,
-                        data.cdg_Unidad,
-                        data.unidad,
-                        data.moneda_Lp,
-                        cantidad,
-                        data.precio_Venta,
-                        precioTotal
-                    )
-                )
-                rv_listproductcot?.adapter?.notifyDataSetChanged()
-            }
-            //-------------------------------------------------------------------
-            calcularMontoTotal()
-            productlistcotadarte.notifyDataSetChanged()
-
-        }
-
-        //********   DISMINUYE PRODUCTOS O ELIMINA    *************
-        iv_btnDisminuir.setOnClickListener {
-            val rv_listproductcot = binding.rvListProdut
-
-            val buscador = buscaCoincidencia(data.codigo)
-            val action = buscador[0]
-            val pos = buscador[1]
-
-            //----------------  AGREGA O AUMENTA LA CANTIDAD -------------------
-            if (action != 0) {
-                val lt = listaProductoListados[pos]
-                var cantidad = lt.cantidad - 1
-                val precioTotal: Double = calculatepricebyqty(cantidad, data.precio_Venta)
-                listaProductoListados[pos] = productlistcot(
-                    data.id_Producto,
-                    data.codigo,
-                    data.codigo_Barra,
-                    data.nombre,
-                    data.mon,
-                    data.precio_Venta,
-                    data.factor_Conversion,
-                    data.cdg_Unidad,
-                    data.unidad,
-                    data.moneda_Lp,
-                    cantidad,
-                    data.precio_Venta,
-                    precioTotal
-                )
-                tv_cantidad.text = cantidad.toString()
-                tv_precioTotal.text = "${data.mon} ${utils().pricetostringformat(precioTotal)}"
-                rv_listproductcot?.adapter?.notifyDataSetChanged()
-                if (cantidad == 0) {
-                    listaProductoListados.removeAt(pos)
-                    rv_listproductcot?.adapter?.notifyDataSetChanged()
-                }
-            } else {
-                println("no hay productos que conincidan")
-            }
-            //-------------------------------------------------------------------
-            calcularMontoTotal()
-            productlistcotadarte.notifyDataSetChanged()
-        }
+    fun onItemDatosProductos(data: productlistcot) {
+        Toast.makeText(this, "Se agrego el producto", Toast.LENGTH_SHORT).show()
+        listaProductoListados.add(data.copy())
+        productlistcotadarte.notifyItemChanged(listaProductoListados.size)
+        calcularMontoTotal()
     }
 
     //************* FUNCIONES ADICIONALES  ****************
     fun calcularMontoTotal(){
-
         montoTotal = listaProductoListados.sumOf { it.precioTotal }
         igvTotal = utils().priceIGV(montoTotal)
         subtotal = utils().priceSubTotal(montoTotal)
@@ -582,32 +441,6 @@ class ActivityCardQuotation : AppCompatActivity() {
         tv_igvCot.text = "${tipomoneda} ${utils().pricetostringformat(igvTotal)}"
         tv_subtotalCot.text = "${tipomoneda} ${utils().pricetostringformat(subtotal)}"
     }
-
-    private fun buscaCoincidencia(dataCodigo:String): List<Int> {
-        //-------------Evalua POSICION Y ACCION DE AGREGAR-------------------
-        //println("------- Evalua POSICION Y ACCION DE AGREGAR-------------")
-        var action = 0
-        var pos = -1
-
-        for (i in listaProductoListados.indices) {
-            println("Cod: ${listaProductoListados[i].codigo}")
-            if (listaProductoListados[i].codigo == dataCodigo) {
-                action += 1
-            }
-            if (action == 1) {
-                pos = i
-                println("posicion: $pos")
-                break
-            }
-        }
-
-        return listOf(action, pos)
-    }
-
-    private fun calculatepricebyqty(Qty: Int, Price: Double): Double {
-        return (Price * Qty.toDouble())
-    }
-
     //************* GUARDAR ROOM  ****************
     fun guardarListRoom(){
 

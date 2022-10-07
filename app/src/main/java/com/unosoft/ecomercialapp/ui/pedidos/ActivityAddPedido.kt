@@ -279,7 +279,7 @@ class ActivityAddPedido : AppCompatActivity() {
                                 database.daoTblBasica().getAllListProct()[0].montoTotal,
                                 0,
                                 0,
-                                "",
+                                binding.tvObsAddPedido.text.toString(),
                                 "",
                                 "0001",
                                 datosCabezera.idCliente!!.toInt(),

@@ -22,10 +22,8 @@ import kotlinx.coroutines.launch
 
 class ActivityEditDetallePedido : AppCompatActivity() {
     private lateinit var binding: ActivityDetallePedidoBinding
-    private lateinit var adapterProductoComercial: productocomercialadapter
     private lateinit var adapterdetailpedido: productlisteditorderadapter
 
-    private val listaProductoPEDIDO = ArrayList<EntityEditPedidoDetail>()
     private val listaProductoListados = ArrayList<productlistcot>()
 
     var montoTotal:Double = 0.0
