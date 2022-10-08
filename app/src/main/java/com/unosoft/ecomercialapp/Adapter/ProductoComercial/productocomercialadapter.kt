@@ -86,7 +86,7 @@ class productocomercialadapter (
                 }else{
                     datos.cantidad = it.toString().toInt()
                     datos.precioUnidad = binding.tvPrecioUnidadDinero.text.toString().toDouble()
-                    datos.precioTotal = datos.cantidad.toDouble()*datos.precioUnidad
+                    datos.precioTotal = datos.cantidad*datos.precioUnidad
                     binding.tvPrecioTotalDinero.setText(utils().pricetostringformat((datos.precioTotal)))
                     binding.tvCantidadTexto.text = "Cantidad: ${datos.cantidad} ${datos.unidad}"
                 }
