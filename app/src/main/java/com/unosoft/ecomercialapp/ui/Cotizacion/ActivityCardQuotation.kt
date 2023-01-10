@@ -325,7 +325,7 @@ class ActivityCardQuotation : AppCompatActivity() {
             rv_productos.adapter = adapterProductoComercial
 
             val listaFiltro = listOf("Nombre", "Codigo")
-            val Adaptador = ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, listaFiltro)
+            val Adaptador = ArrayAdapter(this, android.R.layout.simple_spinner_item, listaFiltro)
 
             sp_filtroListaProducto?.adapter = Adaptador
 
@@ -413,10 +413,6 @@ class ActivityCardQuotation : AppCompatActivity() {
                 }
             }
         }
-
-        println("Lista: ${filterdNameProducto}")
-
-
         adapterProductoComercial.filterList(filterdNameProducto)
     }
 

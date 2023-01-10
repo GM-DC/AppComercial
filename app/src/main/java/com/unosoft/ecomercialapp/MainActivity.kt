@@ -78,18 +78,6 @@ class MainActivity : AppCompatActivity() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
         val ingresar = findViewById<Button>(R.id.ingresar)
         val user = findViewById<EditText>(R.id.user)
         val pass = findViewById<EditText>(R.id.pass)
